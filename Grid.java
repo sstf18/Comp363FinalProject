@@ -20,7 +20,7 @@ public class Grid{
     public boolean move(int directionCode){
         direction = directionCode;
         int x = snake.head.getX();
-        
+        //System.out.println("head: "+snake.head);
         int y = snake.head.getY();
         
         switch (directionCode){
@@ -28,15 +28,17 @@ public class Grid{
                 if(canMove(x, y - Settings.DEFAULT_NODE_SIZE))
                 	//System.out.println("changed Y:" +y);
                     return true;
-                break;
+                //break;
             case 1:
                 if(canMove(x, y + Settings.DEFAULT_NODE_SIZE))
                     return true;
                 break;
             case 2:
                 if(canMove(x - Settings.DEFAULT_NODE_SIZE, y))
+                	//System.out.println("changed X: "+x );
                     return true;
-                break;
+                
+                //break;
             case 3:
                 if(canMove(x + Settings.DEFAULT_NODE_SIZE, y))
                     return true;
@@ -64,6 +66,7 @@ public class Grid{
 
     //create new food method 
     //randomly create food in the (500, 500) 
+    //here the food is a address
     private void createFood(){
        
         int x = (int) (Math.random()*width );
@@ -73,9 +76,13 @@ public class Grid{
             x = (int) (Math.random()*width);
             y = (int) (Math.random()*height);
         }
+        
+       // System.out.println("x: "+x);
+       // System.out.println("y: "+y);
         food = new Node(x,y);
+        
     }    
-    //move auto by default direction    
+    //move auto by default direction"Right";    
     public boolean moveAuto(){
         return move(direction);
     }

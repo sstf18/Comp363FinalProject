@@ -11,6 +11,7 @@ public class Snake {
 	public class BodyList extends LinkedList<Node>{
     	//check Node in Snake body 
         public boolean contains(Node node){
+        	
             for (Node nodeTemp : this) {
                 if (node.equals(nodeTemp))
                     return true;
@@ -22,7 +23,7 @@ public class Snake {
     Node head;
     BodyList body;
     
-    //using node to represent the location of Snake. 
+    //using node to represent the Snake. 
     //linked list is the body of snake
     Snake(int x, int y){
         body = new BodyList();

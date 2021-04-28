@@ -45,6 +45,11 @@ public class GameView  {
         drawCircle(graphics, food, Color.blue);
     }
 
+    //Here still has some bugs
+    //after choose "Yes" button, the old frame will not be closed. 
+    //idea: we may add one more switch method, 
+    //like if (willContinue == 0){case1:let gameVIew,repaint()..}
+    //{case2: system.exit(0)}
     public void showGameOverMessage(){
     	int i = 0;       
             int willContinue = JOptionPane.showConfirmDialog(null,"GameOver, Do you want play agian? ",null,JOptionPane.YES_NO_OPTION);

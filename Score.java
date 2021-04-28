@@ -12,9 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-/*This class not finish yet
-*/
-
 public class Score extends JFrame implements ActionListener {
 	JLabel l1, l2,l3; 
 	JButton b1;

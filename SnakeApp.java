@@ -15,8 +15,7 @@ public class SnakeApp{
     			
     		public void windowClosing(WindowEvent e) {
     			//if logged In, then run init(); 
-    			if (login.loggedIn) {
-    				
+    			if (login.loggedIn) {    				
     				init();
     			}else {
     				login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,32 +27,42 @@ public class SnakeApp{
     	
      }
     
-    public void init(){    	    	   	   	
+     //this method is used for connecting all the class and method.   
+    public void init(){    
+    	
+    	//create 500*500 's grid
     	grid = new Grid(500,500);
+    	//Window's name
 		JFrame frame = new JFrame("snakeGame");
-   		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//one bug we have fixed;
+		//add setDefaultCloseOperation because if the snake does not died, even 
+		//if we close the App's window, it will continuous run until snake hit on the well 
+   		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   		
+   		//an container sets all the components.  
         Container contentPane = frame.getContentPane();
         
         //draw grid, snake, food
         gameView = new GameView(grid);
         gameView.init();
         gameView.getCanvas().setPreferredSize(new Dimension(500,500));
-        contentPane.add(gameView.getCanvas(),BorderLayout.CENTER);
+        contentPane.add(gameView.getCanvas(),BorderLayout.CENTER);        
         
-        //use game controller
+        //use game controller        
         gameController = new GameController(grid,gameView);
+        //listener for key
         frame.addKeyListener(gameController);
+        //start thread
         new Thread(gameController).start();
-
+		
         frame.pack();
         frame.setVisible(true);  
 		   			      
     }
     
     public static void main(String[] args){
-        SnakeApp starter = new SnakeApp();        
+        SnakeApp starter = new SnakeApp(); 
         
-        
-    }
-    
+    }    
 }
