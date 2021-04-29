@@ -10,15 +10,17 @@ public class SnakeApp{
     private GameController gameController;    
     
      public SnakeApp() {
-    	login = new Login();    	   	
+    	login = new Login(); 
+    	//adding a Windows events, 
+    	//it works when we finish login, then close login program. 
     	login.addWindowListener(new WindowAdapter() {    			
     		public void windowClosing(WindowEvent e) {
     			//if logged In, then run init(); 
     			if (login.loggedIn) {    				
     				init();
     			}else {
-    				login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    				super.windowClosing(e);    
+    				//stop login, directly close
+    				login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    				   
     			}    	
     		}
     	}); 
